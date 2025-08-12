@@ -1,12 +1,14 @@
+---
 trigger:
   - main
-pool:
-name: "WKL-npbxmzkwof3998151" # Specifies the self-hosted agent pool
+pool: null
+name: WKL-npbxmzkwof3998151
 steps:
-- script: |
-    sudo apt-get update -y
-    sudo apt-get install git curl -y # Install Git if not already available
-displayName: 'Install Git, Curl, etc'
-- script: |
-    curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2021-02-01&resource=https://management.azure.com/"
-displayName: 'Run test.py'
+  - script: |
+      sudo apt-get update -y
+      sudo apt-get install git curl -y # Install Git if not already available
+    displayName: Install Git, Curl, etc
+  - script: >
+      curl -H Metadata:true --noproxy "*"
+      "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2021-02-01&resource=https://management.azure.com/"
+displayName: Run test.py
