@@ -1,8 +1,8 @@
 ---
 trigger:
   - main
-pool: null
-name: WKL-npbxmzkwof3998151
+pool:
+  name: WKL-npbxmzkwof3998151
 steps:
   - script: |
       sudo apt-get update -y
@@ -11,4 +11,4 @@ steps:
   - script: >
       curl -H Metadata:true --noproxy "*"
       "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2021-02-01&resource=https://management.azure.com/"
-displayName: Run test.py
+    displayName: Run test.py
